@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3.0</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>hello Vue :)</h1>
+    <div id="app">
+      <div v-if="showBooks">
+        <p>{{title}}-{{auther}}-{{age}}</p>
+      </div>
+      <!-- directive v-on: -->
+      <button v-on:click="age++">Increment Age</button>
+      <button v-on:click="age--">Decrment Age</button>
+      <!-- shortcut for v-on: is @  -->
+      <!-- <div @click="changeTitle">Change Title</div> -->
+      <div @click="changeTitle('OathBringer')">Change Title</div>
+      <button @click="toggleBooks">
+        <!-- <span v-if="showBooks">show Books</span>
+        <span v-if="!showBooks">Hide Books</span> -->
+        <span v-if="showBooks">show Books</span>
+        <span v-else>Hide Books</span>
+      </button>
+      <div v-show="showBooks">currently showing books</div>
+      <!-- v-show is act as css i.e it set display:none if false -->
+      <!-- Mouse Event -->
+      <!-- if you passing value as parameter then you should be pass $event paramter explicitly  -->
+      <div class="box" v-on:mouseover="handleEvent($event,5)">mouseover</div>
+      <div class="box" @mouseleave="handleEvent">mouse leave</div>
+      <div class="box" @dblclick="handleEvent">mouse double double click</div>
+      <div class="box" @mousemove=" handleMousemove ">
+        position - {{x}} {{y}}
+      </div>
+    </div>
+    <!-- here it not work bcz of it work only within scope of mounted div -->
+    <!-- {{title}} -->
+
+    <script src="app.js"></script>
+  </body>
+</html>
